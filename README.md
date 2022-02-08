@@ -1,6 +1,6 @@
 # DESIGN AND IMPLEMENTATION OF 2:1 MUX USING CMOS AND SKY130nm PDK
 
-- The purpose of this project is to design a CMOS 2:1 MUX using an Opensource EDA Tool called eSim, an Opensource Spice Simulator called ngspice and Sky130 PDK.
+- The purpose of this project is to design a **CMOS 2:1 MUX** using an Opensource EDA Tool called **eSim**, an Opensource Spice Simulator called **ngspice** and **Sky130 PDK**.
 - To explore the project, you can git clone using the command:
 
 ## Table of Contents:
@@ -15,7 +15,7 @@
 
 ### 1. INTRODUCTION
 ***
-In this project, I am going to Design and Implement 2:1 Mux using CMOS Technology and I will also implement it using sky130nm technology. Design and Implementation will be done using esim and ngspice software. MUX is a data selector which will give single output from several data inputs. Here we have implemented 2 input MUX which will give single output based on select line input. We can verify the output using Circuit Waveforms. This complete design and implementation is done using VLSI technology which has features such as high speed, low power, low cost, and small size.
+In this project, I am going to Design and Implement **2:1 Mux** using **CMOS** Technology and I will also implement it using **sky130nm** technology. Design and Implementation will be done using esim and ngspice software. **MUX** is a data selector which will give single output from several data inputs. Here we have implemented 2 input MUX which will give single output based on select line input. We can verify the output using Circuit Waveforms. This complete design and implementation is done using VLSI technology which has features such as high speed, low power, low cost, and small size.
 
 ### 2. INSTALLATION OF TOOLS
 ***
@@ -52,7 +52,7 @@ Follow these steps for Sky130 download and implementaion:
 1. Replace with CMOSP, mos\_p with sky130\_fd\_pr\_pfet\_01v8 and CMOSN, mos\_n with  sky130\_fd\_pr\_nfet\_01v8.
 1. To replace inductor, capacitor, resistor do it this way, for Ex: L1 out gnd 1m by x1 out gnd mid 0 sky130\_fd\_pr\_\_ind\_03\_90.
 
-Note: For more details go to the cells folder in sky\_fd\_pr. 
+**Note**: For more details go to the cells folder in sky\_fd\_pr. 
 
 Open the specific component folder which you want to use. 
 
@@ -74,28 +74,25 @@ To Run the ckt using ngspice:
 
 ### 3. CIRCUIT DESIGN
 ***
-Multiplexer (MUX) is a data selector which will send single input data at the output based on select line input. Here we have implemented a 2:1 MUX which has 2 inputs (A and B), 1 output (Y) and 1 select line (S). Output Y will be A or B based on 0 or 1 input at the select line (S). If the select line is “0” output Y will be A and if the select line is “1” then output Y will be B. 2:1 MUX using CMOS will be designed using 2 parts: PMOS (pull-up lattice) and NMOS (pull-down lattice). PMOS circuit is connected to supply voltage VDD and NMOS circuit is connected to ground GND. The equation for output Y will be Y=ASbar + BS. According to circuit design rules, ASbar and BS will be connected in parallel in PMOS lattice and it will be connected in series in NMOS lattice. We know that the output of CMOS is always inverted so we have to connect the CMOS inverter circuit at the output. We will implement this circuit design using sky130nm technology. In the Circuit Waveform, we will verify the above implementation using clock pulse. Output Y will have the same clock pulse sequence as A when S will be “0” and it will have the same clock pulse sequence as B when S will be “1”.
+**Multiplexer (MUX)** is a data selector which will send single input data at the output based on select line input. Here we have implemented a 2:1 MUX which has 2 inputs (**A** and **B**), 1 output (**Y**) and 1 select line (**S**). Output Y will be A or B based on 0 or 1 input at the select line (S). If the select line is “0” output Y will be A and if the select line is “1” then output Y will be B. 2:1 MUX using CMOS will be designed using 2 parts: PMOS (pull-up lattice) and NMOS (pull-down lattice). PMOS circuit is connected to supply voltage VDD and NMOS circuit is connected to ground GND. The equation for output Y will be Y=ASbar + BS. According to circuit design rules, ASbar and BS will be connected in parallel in PMOS lattice and it will be connected in series in NMOS lattice. We know that the output of CMOS is always inverted so we have to connect the CMOS inverter circuit at the output. We will implement this circuit design using sky130nm technology. In the Circuit Waveform, we will verify the above implementation using clock pulse. Output Y will have the same clock pulse sequence as A when S will be “0” and it will have the same clock pulse sequence as B when S will be “1”.
 
 #### 3.1 REFERENCE CIRCUIT DIAGRAM
-   ![Circuit Diagram](https://user-images.githubusercontent.com/70748543/152833395-2d779dae-919e-42cd-81ac-cc3ae9fc8605.jpeg)
+  ![reference circuit diagram](https://user-images.githubusercontent.com/70748543/153011605-bb606d89-6c5e-4095-ae4b-e7dd460a38a8.JPG)
 
 
 #### 3.2 REFERENCE CIRCUIT WAVEFORM
-  ![WAVEFORM](https://user-images.githubusercontent.com/70748543/152833636-cecae839-963c-4a8b-b394-7ff5b986865a.jpeg)
+  ![reference circuit waveform](https://user-images.githubusercontent.com/70748543/153012012-14c1b291-9ef8-41dc-b98e-81b1410ff54e.JPG)
   
 
 ### 4. IMPLEMENTATION
 ***
 The basic element of this designing a CMOS inverter for s and sbar inputs.
 The circuit diagram for cmos inverter will be as follows:
-![CMOS INVERTER](https://user-images.githubusercontent.com/70748543/152833887-8a9e9e19-27c0-4323-8dad-675a646b0950.jpeg)
-
+![CMOS INVERTER](https://user-images.githubusercontent.com/70748543/153011045-ce2a91eb-e685-4f8b-9ff1-51a2837a1111.JPG)
 
 After designing cmos inverter for s and sbar we will design the complete circuit using our reference circuit diagram with PMOS logic above and NMOS logic below.
 After connecting the complete we will get a circuit like below:
 ![Final_Circuit_Diagram](https://user-images.githubusercontent.com/70748543/152834286-af702037-bce7-4802-b420-7fb5da3d7411.JPG)
-
-
 
 Label each and every component and port and check electrical rule checking and generate netlist file using spice and make changes in netlist to add sky130 models.
 **The netlist generated initially is as shown below:**
@@ -194,9 +191,7 @@ plot  V(select) +  5 V(vin\_2) + 10 V(vin\_1) + 15 V(vout)
 
 **Truth Table for 2:1 mux using CMOS is as shown below**:
 
-![TRUTH TABLE](https://user-images.githubusercontent.com/70748543/152834432-19ffe762-aec6-4fe0-8f4b-9bb64a65570d.jpeg)
-
-
+![TRUTH TABLE](https://user-images.githubusercontent.com/70748543/153012502-61603109-a4de-4e3c-87f8-8e0b7268358c.JPG)
 
 Now, run the .cir.out file using ngspice and we will get the circuit waveforms as follows:
 ![Final_Circuit_Waveform](https://user-images.githubusercontent.com/70748543/152834359-f9defd90-2871-4304-93a6-e6b094bb7187.JPG)
