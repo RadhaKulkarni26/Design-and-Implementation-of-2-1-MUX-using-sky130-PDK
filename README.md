@@ -1,7 +1,7 @@
 # DESIGN AND IMPLEMENTATION OF 2:1 MUX USING CMOS AND SKY130nm PDK
 
 - The purpose of this project is to design a **CMOS 2:1 MUX** using an Opensource EDA Tool called **eSim**, an Opensource Spice Simulator called **ngspice** and **Sky130 PDK**.
-- To explore the project, you can git clone using the command:
+- To explore the project, you can git clone using the command: git clone https://github.com/RadhaKulkarni26/Design-and-Implementation-of-2-1-MUX-using-sky130-PDK.git
 
 ## Table of Contents:
 
